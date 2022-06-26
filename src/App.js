@@ -1,22 +1,34 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import HelloWorld from './components/HelloWorld';
 
 function App() {
+  const onClick = () => {
+    alert("P etiketine Tıkladı")
+  }
+  const [componentList, setComponentList] = useState(
+    [<p key={1} onClick={() => {
+      onClick()
+    }}>P etiketi </p>, <h1 key={2}>Başlık </h1>, <h2 key={3}>Başlık 2</h2>, <HelloWorld key={4} />]
+  )
+
+  const onClickLi = (name) => {
+    alert(name)
+  }
+  const [data, setData] = useState([{ name: "Yasin" }, { name: "Yasin" }, { name: "Ali" }, { name: "Veli" }])
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {componentList}
+
+        <h3>Liste</h3>
+        <ul>
+          {data.map((item, index) => {
+            return <li key={index} onClick={() => {
+              onClickLi(item.name)
+            }}>{item.name}</li>
+          })}
+        </ul>
       </header>
     </div>
   );
