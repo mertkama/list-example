@@ -4,7 +4,11 @@ import HelloWorld from './components/HelloWorld';
 
 function App() {
   const onClick = () => {
-    alert("P etiketine Tıkladı")
+    alert("P etiketine Tıklandı")
+    const arr = [... data]
+    arr[0].name="Mahmut"
+    setData(arr);
+
   }
   const [componentList, setComponentList] = useState(
     [<p key={1} onClick={() => {
@@ -15,7 +19,9 @@ function App() {
   const onClickLi = (name) => {
     alert(name)
   }
-  const [data, setData] = useState([{ name: "Yasin" }, { name: "Yasin" }, { name: "Ali" }, { name: "Veli" }])
+
+
+  const [data, setData] = useState([{ name: "Yasin" }, { name: "Ali" }, { name: "Veli" }])
   return (
     <div className="App">
       <header className="App-header">
